@@ -1,6 +1,6 @@
 <template>
   <div id="nav">
-    <div class="post" v-for="post in this.$store.getters.modifiedPosts" :key="post.id">
+    <div class="post" v-for="post in this.$store.getters.postsPerPage" :key="post.id">
       <h1>{{this.$store.state.name}}</h1>
       <h2>Title:<i>{{post.title}}</i></h2>
       <span v-if="!post.show">
@@ -18,7 +18,7 @@
       </button>
     </div>
     <ul class="pagination-wrapper">
-    <li class="pagination-item" @click="this.$store.dispatch('paginate', item)" v-for="item in this.$store.state.totalPages" :key="item">
+    <li class="pagination-item" @click="this.$store.dispatch('paginate', item)" v-for="item in this.$store.getters.pagItems" :key="item">
       {{item}}
     </li>
     </ul>
